@@ -1,7 +1,7 @@
 import mongoose from "mongoose"
 
 const Blog_schema = new mongoose.Schema({
-    mail: {
+    email: {
         type: String,
         required: true
     },

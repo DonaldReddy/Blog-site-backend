@@ -10,7 +10,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(UserRoutes);
-app.use(BlogRoutes);
+app.use("/blog", BlogRoutes);
 
 
 export default app;
