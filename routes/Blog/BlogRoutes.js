@@ -11,6 +11,7 @@ route.post("/addblog", async (req, res) => {
 
 route.get("/:id", async (req, res) => {
     const { id } = req.params;
+    console.log(id);
     const response = await getBlog(id);
     res.send(JSON.stringify(response));
 })
