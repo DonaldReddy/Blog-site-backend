@@ -23,6 +23,15 @@ async function getBlog(id = "") {
 async function addBlog(email = "", title = "", content = "") {
     try {
         await Blog.insertMany({ email: email, title: title, content: content });
+        return { status: true };
+    } catch (error) {
+        return { status: false, error: error.message };
+    }
+}
+
+async function editBlog(id = "", title = "", content = "") {
+    try {
+        await Blog.findByIdAndUpdate(id, { title: title, content: content });
         console.log("done");
         return { status: true };
     } catch (error) {
@@ -30,4 +39,4 @@ async function addBlog(email = "", title = "", content = "") {
     }
 }
 
-export { addBlog, getBlogs, getBlog };
+export { addBlog, getBlogs, getBlog, editBlog };
