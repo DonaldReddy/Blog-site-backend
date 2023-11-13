@@ -4,8 +4,8 @@ import { newUser, loginUser } from "./UserAuthentication.js";
 const route = express.Router();
 
 route.post("/signup", async (req, res) => {
-    const { email, password } = req.body;
-    const response = await newUser(email, password)
+    const { name, email, password } = req.body;
+    const response = await newUser(name, email, password)
     res.send(JSON.stringify(response));
 })
 

@@ -1,9 +1,9 @@
 import { User } from "../../database/schemas/User.js"
 
-async function newUser(email, password) {
+async function newUser(name, email, password) {
     try {
 
-        await User.insertMany({ email, password });
+        await User.insertMany({ name, email, password });
         return { status: true }
 
     } catch (error) {
@@ -16,7 +16,7 @@ async function loginUser(email, password) {
         const user = await User.findOne({ email: email });
 
         if (user.password === password)
-            return { status: true };
+            return { status: true, name: user.name };
         return { status: false, error: "Wrong Password" };
 
     } catch (error) {

@@ -1,6 +1,10 @@
 import mongoose from "mongoose"
 
 const Blog_schema = new mongoose.Schema({
+    author: {
+        type: String,
+        required: true
+    },
     email: {
         type: String,
         required: true

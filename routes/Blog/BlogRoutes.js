@@ -1,11 +1,11 @@
 import express from "express"
-import { getBlogs, addBlog, getBlog, editBlog } from "./BlogOperations.js"
+import { getBlogs, addBlog, getBlog, editBlog, deleteBlog } from "./BlogOperations.js"
 
 const route = express.Router()
 
 route.post("/addblog", async (req, res) => {
-    const { email, title, content } = req.body;
-    const blogs = await addBlog(email, title, content);
+    const { author, email, title, content } = req.body;
+    const blogs = await addBlog(author, email, title, content);
     res.send(JSON.stringify({ blogs }));
 })
 
@@ -24,6 +24,12 @@ route.get("/blogs/:email", async (req, res) => {
 route.post("/editblog", async (req, res) => {
     const { id, title, content } = req.body;
     const response = await editBlog(id, title, content);
+    res.send(JSON.stringify(response))
+})
+
+route.delete("/deleteblog/:id", async (req, res) => {
+    const { id } = req.params;
+    const response = await deleteBlog(id);
     res.send(JSON.stringify(response))
 })
 
