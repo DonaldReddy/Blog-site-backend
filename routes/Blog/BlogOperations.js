@@ -34,7 +34,6 @@ async function addBlog(author = "", email = "", title = "", content = "") {
 async function editBlog(id = "", title = "", content = "") {
     try {
         await Blog.findByIdAndUpdate(id, { title: title, content: content });
-        console.log("done");
         return { status: true };
     } catch (error) {
         return { status: false, error: error.message };
@@ -44,7 +43,6 @@ async function editBlog(id = "", title = "", content = "") {
 async function deleteBlog(id = "") {
     try {
         await Blog.findByIdAndDelete(id);
-        console.log("done");
         return { status: true };
     } catch (error) {
         return { status: false, error: error.message };

@@ -10,12 +10,8 @@ route.post("/signup", async (req, res) => {
 })
 
 route.post("/signin", async (req, res) => {
-
     const { email, password } = req.body;
-
     const response = await loginUser(email, password);
-
-    console.log(`user logged in ${email}`);
     res.send(JSON.stringify(response));
 })
 
