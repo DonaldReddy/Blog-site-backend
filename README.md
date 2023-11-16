@@ -1,1 +1,1 @@
-Backend logic for Blog site.
+Backend logic for Blogiac.
