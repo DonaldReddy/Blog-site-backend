@@ -49,4 +49,17 @@ async function deleteBlog(id = "") {
     }
 }
 
-export { addBlog, getBlogs, getBlog, editBlog, deleteBlog };
+async function randomBlogs() {
+    console.log("came");
+    try {
+        const blogs = await Blog.aggregate([{ $sample: { size: 5 } }]);
+        console.log(blogs);
+        return blogs;
+    }
+    catch (error) {
+        console.log(error.message);
+        return { status: false, error: error.message };
+    }
+}
+
+export { addBlog, getBlogs, getBlog, editBlog, deleteBlog, randomBlogs };
